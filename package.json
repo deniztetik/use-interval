@@ -1,5 +1,5 @@
 {
-  "name": "use-interval",
+  "name": "@aslan-hooks/use-interval",
   "version": "1.0.5",
   "main": "index.js",
   "license": "MIT",
