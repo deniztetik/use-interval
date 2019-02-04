@@ -1,5 +1,5 @@
 {
-  "name": "@aslan-hooks/use-local-storage",
+  "name": "use-interval",
   "version": "1.0.5",
   "main": "index.js",
   "license": "MIT",
