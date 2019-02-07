@@ -1,37 +1,22 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = require("react");
+import { useEffect, useRef } from "react";
 
 function useInterval(callback, delay) {
-  var savedCallback = (0, _react.useRef)();
+  const savedCallback = useRef(); // Remember the latest callback.
 
-  // Remember the latest callback.
-  (0, _react.useEffect)(
-    function() {
-      savedCallback.current = callback;
-    },
-    [callback]
-  );
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]); // Set up the interval.
 
-  // Set up the interval.
-  (0, _react.useEffect)(
-    function() {
-      function tick() {
-        savedCallback.current();
-      }
-      if (delay !== null) {
-        var id = setInterval(tick, delay);
-        return function() {
-          return clearInterval(id);
-        };
-      }
-    },
-    [delay]
-  );
+  useEffect(() => {
+    function tick() {
+      savedCallback.current();
+    }
+
+    if (delay !== null) {
+      let id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
 }
 
-exports.default = useInterval;
+export default useInterval;
